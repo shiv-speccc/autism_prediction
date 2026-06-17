@@ -1,11 +1,9 @@
-
 # 🧠 End-to-End Autism Spectrum Disorder Prediction using Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
 ![XGBoost](https://img.shields.io/badge/XGBoost-Boosting-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
-
 
 ## 📌 Overview
 
@@ -15,15 +13,13 @@ Built an end-to-end Machine Learning pipeline to predict Autism Spectrum Disorde
 - Performed Exploratory Data Analysis (EDA)
 - Handled class imbalance using SMOTE
 - Trained and compared Logistic Regression, Random Forest, and XGBoost models
-- Evaluated models using Accuracy, ROC-AUC, and Cross Validation
+- Evaluated models using Accuracy, ROC-AUC, and Stratified 5-Fold Cross-Validation
 - Automated model persistence and inference pipeline
 - Generated visual analytics for model interpretation
-
 
 ## 🛠 Tech Stack
 
 Python • Pandas • NumPy • Scikit-Learn • XGBoost • Matplotlib • Seaborn • Joblib
-
 
 ## 🎯 Why This Project?
 
@@ -31,27 +27,19 @@ Autism diagnosis often requires extensive clinical assessment and specialist eva
 
 This project explores how machine learning can support preliminary ASD screening using AQ-10 behavioural questionnaire data, enabling faster and more scalable risk assessment.
 
-
 ## 🔄 ML Workflow
 
-Dataset
-↓
-Data Cleaning
-↓
-EDA
-↓
-Feature Engineering
-↓
-SMOTE Balancing
-↓
-Model Training
-↓
-Model Evaluation
-↓
-Best Model Selection
-↓
-Inference Pipeline
-
+```mermaid
+flowchart TD
+    A[Dataset] --> B[Data Cleaning]
+    B --> C[EDA]
+    C --> D[Feature Engineering]
+    D --> E[SMOTE Balancing]
+    E --> F[Model Training]
+    F --> G[Model Evaluation]
+    G --> H[Best Model Selection]
+    H --> I[Inference Pipeline]
+```
 
 ## 📁 Project Structure
 
@@ -65,6 +53,7 @@ autism_prediction/
 │   ├── train.py            ← Full ML pipeline (EDA → train → evaluate → save)
 │   └── predict.py          ← Run inference on a new patient record
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -171,46 +160,51 @@ python src/predict.py
 
 ---
 
-📊 Results
-Model	Accuracy	ROC-AUC
-Logistic Regression	79.4%	0.836
-Random Forest	83.1%	0.873
-XGBoost	83.1%	0.874
+## 📊 Results
 
-🏆 Best Model: XGBoost
+| Model | Accuracy | ROC-AUC | CV-AUC (5-fold) |
+|-------|----------|---------|------------------|
+| Logistic Regression | 79.4% | 0.836 | *fill in from training log* |
+| Random Forest | 83.1% | 0.873 | *fill in from training log* |
+| XGBoost | 83.1% | 0.874 | *fill in from training log* |
 
+🏆 **Best Model (by ROC-AUC): XGBoost**
 
-Performance Comparison
-Model performance comparison
+### Performance Comparison
 
-Accuracy and ROC-AUC achieved by each classification model.
+![Model performance comparison](outputs/model_comparison.png)
 
-<img width="480" height="324" alt="Model performance comparison" src="https://github.com/user-attachments/assets/e6369ffb-d901-493c-9945-b700d65af598" />
+*Accuracy and ROC-AUC achieved by each classification model.*
 
-Key Findings :
+### Key Findings
 
-XGBoost achieved the highest ROC-AUC score (0.874) and tied for the highest accuracy (83.1%).
-Random Forest delivered nearly identical performance with a ROC-AUC of 0.873.
-Logistic Regression provided a strong and interpretable baseline with 79.4% accuracy and 0.836 ROC-AUC.
-AQ-10 questionnaire scores showed strong predictive power for ASD classification.
-The AQ-10 total score (result) emerged as the most influential feature in the Random Forest model.
+- XGBoost achieved the highest ROC-AUC score (0.874) and tied with Random Forest for the highest accuracy (83.1%).
+- Random Forest delivered nearly identical performance, with a ROC-AUC of 0.873 and the same accuracy.
+- Logistic Regression provided a strong, interpretable baseline at 79.4% accuracy and 0.836 ROC-AUC.
+- AQ-10 questionnaire scores showed strong predictive power for ASD classification, and the AQ-10 total score (`result`) emerged as the most influential feature in the Random Forest model.
+- **On the ASD (positive) class specifically, recall actually declines as model complexity increases**: Logistic Regression recovers 68.8% of true ASD cases, Random Forest 65.6%, and XGBoost 59.4%. Factoring in precision as well, Random Forest edges out XGBoost on ASD-class F1 (≈60.9% vs ≈58.4%). For a screening context — where missing a true ASD case is typically costlier than a false alarm — this trade-off is worth weighing alongside the headline accuracy/AUC numbers rather than picking a "best model" on aggregate metrics alone.
 
+---
 
 ## 🔬 Dataset Features
 
 | Feature | Description |
-|---------|-------------|
+|---------|--------------|
 | A1–A10 Score | AQ-10 behavioural screening questions (0 or 1) |
 | age | Patient age |
 | gender | Male / Female |
 | ethnicity | Ethnic background |
 | jaundice | Jaundice at birth (yes/no) |
-| austim | Family member with autism (yes/no) |
-| contry_of_res | Country of residence |
+| austim* | Family member with autism (yes/no) |
+| contry_of_res* | Country of residence |
 | used_app_before | Prior screening app usage |
 | result | Raw AQ-10 score |
 | relation | Who completed the questionnaire |
 | **Class/ASD** | **Target: 1 = ASD, 0 = No ASD** |
+
+\* `austim` and `contry_of_res` are spelled exactly as they appear in the original source dataset's columns — kept as-is for compatibility with the raw data rather than corrected.
+
+**Source:** The questionnaire data is based on the AQ-10 screening instrument (Baron-Cohen et al.). The specific `train.csv` used here follows the column schema of the widely-circulated Kaggle "Autism Screening / Autism Prediction" dataset derived from that instrument. *(Add the exact dataset link/citation you downloaded from here, so reviewers can trace provenance.)*
 
 ---
 
@@ -222,10 +216,19 @@ The AQ-10 total score (result) emerged as the most influential feature in the Ra
 | Random Forest | Ensemble of 200 decision trees |
 | XGBoost | Gradient boosting, typically best performer |
 
-**Imbalance handling:** SMOTE (Synthetic Minority Oversampling Technique)  
+**Imbalance handling:** SMOTE (Synthetic Minority Oversampling Technique)
 **Evaluation:** Accuracy, AUC-ROC, Stratified 5-Fold Cross-Validation
 
 ---
 
 ## ⚠️ Disclaimer
 This project is for academic/educational purposes only. It is **not** a clinical diagnostic tool. Always consult a qualified medical professional for autism diagnosis.
+
+---
+
+## 📄 License
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+
+## 👤 Author
+**Shivarchan Coomaran**
+GitHub: [github.com/shiv-speccc](https://github.com/shiv-speccc) • LinkedIn: [linkedin.com/in/shivarchan-coomaran-b47b14293](https://www.linkedin.com/in/shivarchan-coomaran-b47b14293)
