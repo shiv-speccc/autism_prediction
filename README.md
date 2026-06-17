@@ -19,7 +19,10 @@ Built an end-to-end Machine Learning pipeline to predict Autism Spectrum Disorde
 - Automated model persistence and inference pipeline
 - Generated visual analytics for model interpretation
 
-**Tech Stack:** Python, Pandas, Scikit-Learn, XGBoost, Matplotlib, Seaborn, Joblib
+
+## 🛠 Tech Stack
+
+Python • Pandas • NumPy • Scikit-Learn • XGBoost • Matplotlib • Seaborn • Joblib
 
 
 ## 🎯 Why This Project?
