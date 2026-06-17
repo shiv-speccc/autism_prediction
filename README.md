@@ -1,5 +1,5 @@
 # 🧠 Autism Spectrum Disorder (ASD) Prediction
-**JAIN University | B.Tech CSE Data Science | In-House Project**  
+**JAIN University | B.Tech CSE Data Science 
 Student: Shiv | ID: 23BTRDC040
 
 ---
