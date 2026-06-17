@@ -171,6 +171,23 @@ python src/predict.py
 
 ---
 
+📊 Results
+Model	Accuracy	ROC-AUC
+Logistic Regression	79.4%	0.836
+Random Forest	83.1%	0.873
+XGBoost	83.1%	0.874
+
+🏆 Best Model: XGBoost
+
+
+Performance Comparison
+Model performance comparison
+
+Accuracy and ROC-AUC achieved by each classification model.
+
+<img width="480" height="324" alt="Model performance comparison" src="https://github.com/user-attachments/assets/e6369ffb-d901-493c-9945-b700d65af598" />
+
+
 
 ## 🔬 Dataset Features
 
