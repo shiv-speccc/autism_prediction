@@ -164,17 +164,11 @@ python src/predict.py
 
 | Model | Accuracy | ROC-AUC | CV-AUC (5-fold) |
 |-------|----------|---------|------------------|
-| Logistic Regression | 79.4% | 0.836 | *fill in from training log* |
-| Random Forest | 83.1% | 0.873 | *fill in from training log* |
-| XGBoost | 83.1% | 0.874 | *fill in from training log* |
+| Logistic Regression | 79.4% | 0.836 | 0.9162 ± 0.0334 |
+| Random Forest | 83.1% | 0.873 | 0.9703 ± 0.0133 |
+| XGBoost | 83.1% | 0.874 | 0.9513 ± 0.0169 |
 
 🏆 **Best Model (by ROC-AUC): XGBoost**
-
-### Performance Comparison
-
-![Model performance comparison](outputs/model_comparison.png)
-
-*Accuracy and ROC-AUC achieved by each classification model.*
 
 ### Key Findings
 
@@ -204,7 +198,8 @@ python src/predict.py
 
 \* `austim` and `contry_of_res` are spelled exactly as they appear in the original source dataset's columns — kept as-is for compatibility with the raw data rather than corrected.
 
-**Source:** The questionnaire data is based on the AQ-10 screening instrument (Baron-Cohen et al.). The specific `train.csv` used here follows the column schema of the widely-circulated Kaggle "Autism Screening / Autism Prediction" dataset derived from that instrument. *(Add the exact dataset link/citation you downloaded from here, so reviewers can trace provenance.)*
+**Source:** The questionnaire data is based on the AQ-10 screening instrument (Baron-Cohen et al.). The `train.csv` used here is sourced from the **ML Olympiad — Autism Prediction Challenge** on Kaggle:
+🔗 [https://www.kaggle.com/competitions/autism-prediction](https://www.kaggle.com/competitions/autism-prediction)
 
 ---
 
