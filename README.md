@@ -1,6 +1,14 @@
 # 🧠 Autism Spectrum Disorder (ASD) Prediction
 
 
+# 🧠 End-to-End Autism Spectrum Disorder Prediction using Machine Learning
+
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
+![XGBoost](https://img.shields.io/badge/XGBoost-Boosting-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+
 ## 📌 Overview
 
 Built an end-to-end Machine Learning pipeline to predict Autism Spectrum Disorder (ASD) using AQ-10 screening questionnaire data.
@@ -14,6 +22,34 @@ Built an end-to-end Machine Learning pipeline to predict Autism Spectrum Disorde
 - Generated visual analytics for model interpretation
 
 **Tech Stack:** Python, Pandas, Scikit-Learn, XGBoost, Matplotlib, Seaborn, Joblib
+
+
+## 🎯 Why This Project?
+
+Autism diagnosis often requires extensive clinical assessment and specialist evaluation.
+
+This project explores how machine learning can support preliminary ASD screening using AQ-10 behavioural questionnaire data, enabling faster and more scalable risk assessment.
+
+
+## 🔄 ML Workflow
+
+Dataset
+↓
+Data Cleaning
+↓
+EDA
+↓
+Feature Engineering
+↓
+SMOTE Balancing
+↓
+Model Training
+↓
+Model Evaluation
+↓
+Best Model Selection
+↓
+Inference Pipeline
 
 
 ## 📁 Project Structure
@@ -133,6 +169,7 @@ python src/predict.py
 ```
 
 ---
+
 
 ## 🔬 Dataset Features
 
