@@ -187,7 +187,8 @@ Accuracy and ROC-AUC achieved by each classification model.
 
 <img width="480" height="324" alt="Model performance comparison" src="https://github.com/user-attachments/assets/e6369ffb-d901-493c-9945-b700d65af598" />
 
-Key Findings
+Key Findings :
+
 XGBoost achieved the highest ROC-AUC score (0.874) and tied for the highest accuracy (83.1%).
 Random Forest delivered nearly identical performance with a ROC-AUC of 0.873.
 Logistic Regression provided a strong and interpretable baseline with 79.4% accuracy and 0.836 ROC-AUC.
