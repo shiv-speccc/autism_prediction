@@ -1,6 +1,21 @@
 # 🧠 Autism Spectrum Disorder (ASD) Prediction
 
 
+## 📌 Overview
+
+Built an end-to-end Machine Learning pipeline to predict Autism Spectrum Disorder (ASD) using AQ-10 screening questionnaire data.
+
+### Key Highlights
+- Performed Exploratory Data Analysis (EDA)
+- Handled class imbalance using SMOTE
+- Trained and compared Logistic Regression, Random Forest, and XGBoost models
+- Evaluated models using Accuracy, ROC-AUC, and Cross Validation
+- Automated model persistence and inference pipeline
+- Generated visual analytics for model interpretation
+
+**Tech Stack:** Python, Pandas, Scikit-Learn, XGBoost, Matplotlib, Seaborn, Joblib
+
+
 ## 📁 Project Structure
 
 ```
