@@ -1,5 +1,3 @@
-# 🧠 Autism Spectrum Disorder (ASD) Prediction
-
 
 # 🧠 End-to-End Autism Spectrum Disorder Prediction using Machine Learning
 
